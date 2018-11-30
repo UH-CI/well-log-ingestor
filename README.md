@@ -36,7 +36,7 @@ system -the Agave storage system that has the Well_Data folder and imported well
 
 After those are defined you need to run:
 
-auth_token_refresh
+```auth_token_refresh```
 
 This will refresh your Agave token - this will be used by default in the script. NOTE the code should be updated to use the -z flag for all the CLI calls and a Agave_Token variables BUT it isn't yet so to use as is refresh your local Agave token.
 
