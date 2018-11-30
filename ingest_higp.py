@@ -1,14 +1,20 @@
 # Import required modules
 import httplib2
 from bs4 import BeautifulSoup
+import subprocess
 from subprocess import call
 
-base_url = 'https://www.higp.hawaii.edu/hggrc/wells/Oahu/'
-http = httplib2.Http()
-status, response = http.request(base_url)
+island = 'Niihau'
+base_url = 'https://www.higp.hawaii.edu/hggrc/wells/'
+system = 'ikewai-annotated-data'
+access_token ='AGAVE-TOKEN'
 
+http = httplib2.Http()
+status, response = http.request(base_url+"/"+island+"/")
+print(response)
 soup = BeautifulSoup(response, 'html.parser')
 
 for link in soup.find_all('a'):
+    print(link.get('href'))
     print(link.get('href').split('/')[1])
-    call("files-import -U "+base_url+link.get('href')+" -V -S ikewai-working-sean -z 832d5f4ae24d6e8576cbbf21a9f15 -N "+link.get('href').split('/')[1], shell=True)
+    print subprocess.check_output("files-import -U "+base_url+island+"/"+link.get('href')+" -V -S "+system+"/Well_Data/"+island+" -z "+access_token+" -N "+link.get('href').split('/')[1], shell=True)
