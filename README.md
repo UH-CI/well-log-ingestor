@@ -7,13 +7,13 @@ These scripts utilize the AGAVE Command Line Interface(CLI) (https://bitbucket.o
 The store-wells.py script parses a csv file that has all the Well definitions and related metadata and creates new Well Metadata objects in Agave. This data comes from CWRM so we cannot share it but the required fields are long83dd, lat83dd, and wcr any other header field names/values are also imported but the 3 required are directly referenced in the script so MUST exist for it to work.  NOTE that you must modify your AGAVE TOKEN and the Well schemaid to work with your Agave instance as well as the input filename (wells.csv is the default).
 
 After configuration you can run:
-''' python store-wells.py '''
+```python store-wells.py```
 
 ## STEP 2 - Ingest Well Files
 The ingest_higpy.py script will download an island worth of well log files from the HIGP server and store them in Agave in the specified Agave storage system.  Prior to running you need to set the island name, AGAVE Token and system. You system will also need a folder called Well_Data in the defined home directory as this is where the script will attempt to push all files
 
 After configuration you can run:
-''' python ingest_higp.py '''
+```python ingest_higp.py```
 
 You can run this for each island desired to import the corresponding files.
 
@@ -40,6 +40,6 @@ auth_token_refresh
 
 This will refresh your Agave token - this will be used by default in the script. NOTE the code should be updated to use the -z flag for all the CLI calls and a Agave_Token variables BUT it isn't yet so to use as is refresh your local Agave token.
 
-'''python annotate_higp.py'''
+```python annotate_higp.py```
 
 Runs the automated annotations for all files in the island folder specified.
